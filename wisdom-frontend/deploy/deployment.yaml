@@ -5,23 +5,23 @@ metadata:
   name: wisdom-frontend
   namespace: apps
   labels:
-    app: wisdom-frontend-deployment
+    app: wisdom-frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: wisdom-frontend-deployment
+      app: wisdom-frontend
   template:
     metadata:
-      name: wisdom-frontend-deployment
+      name: wisdom-frontend
       labels:
-        app: wisdom-frontend-deployment
+        app: wisdom-frontend
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8080'
     spec:
       containers:
-      - name: wisdom-frontend-deployment
+      - name: wisdom-frontend
         image: mejlholm/wisdom-frontend:1.0-SNAPSHOT
         resources:
           limits:
@@ -43,7 +43,7 @@ spec:
             path: /health
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 2
-          periodSeconds: 5
+          initialDelaySeconds: 1
+          periodSeconds: 1
           successThreshold: 2
           timeoutSeconds: 5

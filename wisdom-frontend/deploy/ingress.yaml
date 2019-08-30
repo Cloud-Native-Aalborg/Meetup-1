@@ -2,11 +2,11 @@
 kind: Ingress
 apiVersion: extensions/v1beta1
 metadata:
-  name: wisdom-frontend-ingress
+  name: wisdom-frontend
   namespace: apps
 spec:
   rules:
-  - host: wisdom.debian-2gb-nbg1-3.mejlholm.org
+  - host: wisdom.debian-2gb-nbg1-1.mejlholm.org
     http:
       paths:
       - path: /

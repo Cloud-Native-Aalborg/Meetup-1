@@ -6,7 +6,7 @@ metadata:
   namespace: apps
 spec:
   selector:
-    app: wisdon-frontend-deployment
+    app: wisdom-frontend
   ports:
     - name: default
       port: 8080

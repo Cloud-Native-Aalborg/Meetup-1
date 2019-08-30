@@ -5,23 +5,23 @@ metadata:
   name: wisdom-service
   namespace: apps
   labels:
-    app: wisdom-service-deployment
+    app: wisdom-service
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: wisdom-service-deployment
+      app: wisdom-service
   template:
     metadata:
-      name: wisdom-service-deployment
+      name: wisdom-service
       labels:
-        app: wisdom-service-deployment
+        app: wisdom-service
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8081'
     spec:
       containers:
-      - name: wisdom-service-deployment
+      - name: wisdom-service
         image: mejlholm/wisdom-service:1.0-SNAPSHOT
         envFrom:
           - secretRef:
@@ -46,7 +46,7 @@ spec:
             path: /health
             port: 8081
             scheme: HTTP
-          initialDelaySeconds: 2
-          periodSeconds: 5
+          initialDelaySeconds: 1
+          periodSeconds: 1
           successThreshold: 2
           timeoutSeconds: 5

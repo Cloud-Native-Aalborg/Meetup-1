@@ -19,15 +19,8 @@ RUN mvn verify -Pnative  -Dmaven.test.skip=true
 
 
 #base image for deployment
-FROM gcr.io/distroless/java:11
-EXPOSE 8080
+FROM cescoffier/native-base:latest
+EXPOSE 8081
 
-#copy build results
-ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
-ENV AB_ENABLED=jmx_exporter
-COPY --from=build target/lib/* /deployments/lib/
-COPY --from=build target/*-runner.jar /deployments/app.jar
-
-#set application start
-WORKDIR /deployments
-CMD ["app.jar"]
+COPY --from=build target/*-runner /application
+CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
