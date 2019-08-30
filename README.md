@@ -2,7 +2,7 @@
 
 This document contains the commands used in the kubernetes in 10 minutes presentation.
 
-## Steps
+## Steps to setup cluster
 
 Allocate 3 vms
 
@@ -30,6 +30,12 @@ debian-2gb-nbg1-2   Ready    worker   5m29s   v1.14.6-k3s.1
 debian-2gb-nbg1-3   Ready    master   8m25s   v1.14.6-k3s.1
 ~~~
 
+## Steps to make applications
+
+
+
+## Steps to deploy applications
+
 
 
 
@@ -37,3 +43,13 @@ debian-2gb-nbg1-3   Ready    master   8m25s   v1.14.6-k3s.1
 - https://k3s.io/
 - https://github.com/alexellis/k3sup
 
+- https://quarkus.io/
+
+- https://github.com/Cloud-Native-Aalborg/Meetup-1
+
+
+
+#BIO
+
+- Arne Mejlholm mejlholm@mejlholm.org
+- Twitter @mejlholm34263
