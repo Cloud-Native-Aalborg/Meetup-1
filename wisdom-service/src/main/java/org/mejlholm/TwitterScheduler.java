@@ -44,6 +44,10 @@ class TwitterScheduler {
     }
 
     String getRandomTweet() {
-        return statuses.get(rand.nextInt(statuses.size())).getText();
+        if (statuses == null || statuses.isEmpty()) {
+            return "No quotes yet";
+        } else {
+            return statuses.get(rand.nextInt(statuses.size())).getText();
+        }
     }
 }

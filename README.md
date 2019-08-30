@@ -30,11 +30,14 @@ debian-2gb-nbg1-2   Ready    worker   5m29s   v1.14.6-k3s.1
 debian-2gb-nbg1-3   Ready    master   8m25s   v1.14.6-k3s.1
 ~~~
 
-## Steps to make applications
+## Steps to build and deploy applications
 
+~~~Shell
+kubectl create secret generic wisdom-service-secret --from-env-file=secret.env -n apps
+./build.sh
+~~~
 
-
-## Steps to deploy applications
+## Steps to add ingress
 
 
 

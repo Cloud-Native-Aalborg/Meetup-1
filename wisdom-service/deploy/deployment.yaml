@@ -1,0 +1,54 @@
+---
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  name: wisdom-service
+  namespace: apps
+  labels:
+    app: wisdom-service-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wisdom-service-deployment
+  template:
+    metadata:
+      name: wisdom-service-deployment
+      labels:
+        app: wisdom-service-deployment
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8081'
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      containers:
+      - name: wisdom-service-deployment
+        image: mejlholm/wisdom-service:1.0-SNAPSHOT
+        envFrom:
+          - secretRef:
+              name: wisdom-service-secret
+        resources:
+          limits:
+            memory: "256Mi"
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8081
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8081
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 2
+          timeoutSeconds: 5

@@ -1,0 +1,15 @@
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: wisdom-frontend-ingress
+  namespace: apps
+spec:
+  rules:
+  - host: wisdom.debian-2gb-nbg1-3
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: wisdom-frontend
+          servicePort: 8080
