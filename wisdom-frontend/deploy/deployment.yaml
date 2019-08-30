@@ -20,8 +20,6 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8080'
     spec:
-      nodeSelector:
-        kubernetes.io/arch: amd64
       containers:
       - name: wisdom-frontend-deployment
         image: mejlholm/wisdom-frontend:1.0-SNAPSHOT

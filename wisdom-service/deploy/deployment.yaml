@@ -20,8 +20,6 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8081'
     spec:
-      nodeSelector:
-        kubernetes.io/arch: amd64
       containers:
       - name: wisdom-service-deployment
         image: mejlholm/wisdom-service:1.0-SNAPSHOT
