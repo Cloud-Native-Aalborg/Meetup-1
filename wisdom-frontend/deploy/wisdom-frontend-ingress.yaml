@@ -6,7 +6,7 @@ metadata:
   namespace: apps
 spec:
   rules:
-  - host: wisdom.debian-2gb-nbg1-1.mejlholm.org
+  - host: wisdom.mejlholm.org
     http:
       paths:
       - path: /
