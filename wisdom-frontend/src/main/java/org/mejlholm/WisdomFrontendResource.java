@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 @Path("wisdom")
 @Metered
 @ApplicationScoped
-public class WisdomResource {
+public class WisdomFrontendResource {
 
     @Inject
     @RestClient

@@ -8,7 +8,7 @@ for application in "wisdom-frontend" "wisdom-service"
 do
   cd ${application} || exit
 
-  #build and push to docker hub
+  #build our multistage docker images and push to docker hub
   sudo docker build . -t mejlholm/${application}:"${version}"
   sudo docker push mejlholm/${application}:"${version}"
 
