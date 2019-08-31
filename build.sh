@@ -2,15 +2,19 @@
 
 set -e
 
-cd wisdom-service || exit
-sudo docker build . -t mejlholm/wisdom-service:1.0-SNAPSHOT
-sudo docker push mejlholm/wisdom-service:1.0-SNAPSHOT
-cd .. || exit
+version=$(git rev-parse HEAD)
 
-cd wisdom-frontend || exit
-sudo docker build . -t mejlholm/wisdom-frontend:1.0-SNAPSHOT
-sudo docker push mejlholm/wisdom-frontend:1.0-SNAPSHOT
-cd .. || exit
+for application in "wisdom-frontend" "wisdom-service"
+do
+  cd ${application} || exit
+  sudo docker build . -t mejlholm/${application}:"${version}"
+  sudo docker push mejlholm/${application}:"${version}"
 
+  sed -i -E "s,image: mejlholm/$application:(.*)$,image: mejlholm/$application:$version,g" deploy/${application}-deployment.yaml
+  git add deploy/${application}-deployment.yaml
+  git commit -m "build"
 
+  git push origin master
+  cd .. || exit
+done
 
