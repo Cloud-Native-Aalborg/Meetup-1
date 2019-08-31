@@ -22,14 +22,14 @@ spec:
     spec:
       containers:
       - name: wisdom-service
-        image: mejlholm/wisdom-service:1.0-SNAPSHOT
+        image: mejlholm/wisdom-service:bd39dedf37a45cb0b38e90f2ef2fabddbab79b26
         envFrom:
           - secretRef:
               name: wisdom-service-secret
         resources:
           limits:
             memory: "256Mi"
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
           httpGet:
