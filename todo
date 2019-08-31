@@ -1,0 +1,6 @@
+fluxctl install \
+--git-user=${GHUSER} \
+--git-email=${GHUSER}@users.noreply.github.com \
+--git-url=git@github.com:Cloud-Native-Aalborg/meetup-1 \
+--git-paths=namespaces,workloads \
+--namespace=flux | kubectl apply -f -
