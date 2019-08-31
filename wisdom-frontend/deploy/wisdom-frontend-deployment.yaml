@@ -22,11 +22,11 @@ spec:
     spec:
       containers:
       - name: wisdom-frontend
-        image: mejlholm/wisdom-frontend:1.0-SNAPSHOT
+        image: mejlholm/wisdom-frontend:bd7ede41feac1413c047750c1370933de7625609
         resources:
           limits:
             memory: "256Mi"
-        imagePullPolicy: Always
+        imagePullPolicy: InNotPresent
         livenessProbe:
           failureThreshold: 3
           httpGet:
