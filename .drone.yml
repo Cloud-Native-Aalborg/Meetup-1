@@ -27,7 +27,7 @@ steps:
   - name: bump-versions
     image: git
     commands:
-      - export version=$(git rev-parse HEAD)
+      - version=$(git rev-parse HEAD)
       - sed -i -E "s,image: mejlholm/wisdom-service:(.*)$,image: mejlholm/wisdom-service:$version,g" wisdom-service/deploy/wisdom-service-deployment.yaml
       - sed -i -E "s,image: mejlholm/wisdom-frontend:(.*)$,image: mejlholm/wisdom-frontend:$version,g" wisdom-service/deploy/wisdom-service-deployment.yaml
 
