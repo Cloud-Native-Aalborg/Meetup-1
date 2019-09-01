@@ -76,6 +76,9 @@ If you are interested in the applications things to noice are:
  - multi-stage docker builds, so no need for local java tools in the builds. 
  - secret is not part of repository. Copy secret.env.example to secret.env and insert your twitter account details. 
  - static yaml files in deploy documents our deployments
+ - a git post-update hook updates the image tag version in the deployment yaml files
+ - drone builds the images
+ - flux deploy them
 
 ~~~Shell
 kubectl config set-context --current --namespace=apps
