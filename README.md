@@ -69,6 +69,8 @@ fluxctl install \
 --git-url=git@github.com:Cloud-Native-Aalborg/meetup-1 \
 --git-paths=namespaces,wisdom-frontend/deploy,wisdom-service/deploy \
 --namespace=flux | kubectl apply -f -
+
+kubectl patch deployments -n flux flux --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--git-ci-skip"}]'
 ~~~
 
 ## Steps to build and deploy applications
