@@ -6,25 +6,27 @@ steps:
     image: plugins/docker
     settings:
       repo: mejlholm/wisdom-service
-      auto_tag: true
       username:
         from_secret: docker_hub_username
       password:
         from_secret: docker_hub_password
       dockerfile: wisdom-service/Dockerfile
       context: wisdom-service
+    commands:
+      - echo -n "1.0${DRONE_BUILD_NUMBER}" >.tags
 
   - name: build-wisdom-frontend
     image: plugins/docker
     settings:
       repo: mejlholm/wisdom-frontend
-      tags:
       username:
         from_secret: docker_hub_username
       password:
         from_secret: docker_hub_password
       dockerfile: wisdom-frontend/Dockerfile
       context: wisdom-frontend
+    commands:
+      - echo -n "1.0${DRONE_BUILD_NUMBER}" >.tags
 
   - name: notify
     image: plugins/slack
