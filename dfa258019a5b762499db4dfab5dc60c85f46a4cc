@@ -1,0 +1,1 @@
+{"jobID":"7883203f-3106-b3b7-cc63-0e19baadb0a4","spec":{"type":"policy","cause":{"Message":"","User":""},"spec":{"apps:deployment/wisdom-frontend":{"add":{"automated":"true"},"remove":{}}}},"result":null}
