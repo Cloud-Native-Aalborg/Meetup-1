@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-  - name update yaml versions:
+  - name: update-yaml-versions
     image: docker:git
     commands:
       - >
@@ -16,7 +16,7 @@ steps:
       - git commit -m "Bumped version"
       - git push origin master
 
-  - name: wisdom-service
+  - name: build-wisdom-service
     image: plugins/docker
     settings:
       repo: mejlholm/wisdom-service
@@ -27,7 +27,7 @@ steps:
       dockerfile: wisdom-service/Dockerfile
       context: wisdom-service
 
-  - name: wisdom-frontend
+  - name: build-wisdom-frontend
     image: plugins/docker
     settings:
       repo: mejlholm/wisdom-frontend
