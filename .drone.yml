@@ -27,10 +27,4 @@ steps:
   - name: bump-versions
     image: git
     commands:
-      - sed -i -E "s,image: mejlholm/wisdom-service:(.*)$,image: mejlholm/wisdom-service:"$(git rev-parse HEAD)",g" wisdom-service/deploy/wisdom-service-deployment.yaml
-      - sed -i -E "s,image: mejlholm/wisdom-frontend:(.*)$,image: mejlholm/wisdom-frontend:"$(git rev-parse HEAD)",g" wisdom-service/deploy/wisdom-service-deployment.yaml
-
-      - git add wisdom-service/deploy/wisdom-service-deployment.yaml
-      - git add wisdom-frontend/deploy/wisdom-frontend-deployment.yaml
-      - git commit -m "Drone bumped image tags automatically"
-      - git push origin master
+      - ./build.sh
