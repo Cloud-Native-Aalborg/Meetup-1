@@ -23,8 +23,3 @@ steps:
         from_secret: docker_hub_password
       dockerfile: wisdom-frontend/Dockerfile
       context: wisdom-frontend
-
-  - name: bump-versions
-    image: plugins/docker:linux-amd64
-    commands:
-      - ./build.sh
