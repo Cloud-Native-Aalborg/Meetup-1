@@ -83,7 +83,7 @@ If you are interested in the applications things to noice are:
  - static yaml files in deploy documents our deployments
  - a git post-update hook updates the image tag version in the deployment yaml files
  - drone builds the images
- - flux deploy them
+ - flux monitors and deploy them
 
 ~~~Shell
 kubectl config set-context --current --namespace=apps
