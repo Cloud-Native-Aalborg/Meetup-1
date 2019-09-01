@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: wisdom-service
-        image: mejlholm/wisdom-service:8a67f920169e617214bba972ffa07c6ba9512647
+        image: mejlholm/wisdom-service:1a66291ddb11c4420f9ba9896d6ff1f53fed1629
         envFrom:
           - secretRef:
               name: wisdom-service-secret
