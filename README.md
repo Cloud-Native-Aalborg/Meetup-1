@@ -3,6 +3,8 @@
 This document contains the commands used in the kubernetes in 10 minutes presentation.
 Feel free to let me know if you have improvments or catch any typos.
 
+
+
 ## Steps to setup cluster
 
 Allocate 3 VMs on your favorite cloud hosting provider. 
