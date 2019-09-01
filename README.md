@@ -131,7 +131,7 @@ Below you find links to the things we've used in this demo:
 
 # About
 Arne Mejlholm, Java developer at Spar Nord. Driving the adoptation of docker/kubernetes and a lot more 
-in the IT development department. 
+in the IT development department. Passionated about devops to improve and learn.
 
 - Arne Mejlholm mejlholm@mejlholm.org
 - Twitter @mejlholm34263
