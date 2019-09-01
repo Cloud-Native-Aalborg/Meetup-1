@@ -25,6 +25,6 @@ steps:
       context: wisdom-frontend
 
   - name: bump-versions
-    image: git
+    image: plugins/docker:linux-amd64
     commands:
       - ./build.sh

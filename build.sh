@@ -2,6 +2,7 @@
 
 set -e
 
+#fixme, figure out how to provide github credentials
 version=$(git rev-parse HEAD)
 
 for application in "wisdom-frontend" "wisdom-service"
