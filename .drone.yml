@@ -13,6 +13,10 @@ steps:
         from_secret: docker_hub_password
       dockerfile: wisdom-service/Dockerfile
       context: wisdom-service
+    trigger:
+      event:
+        exclude:
+          - tag
 
   - name: build-wisdom-frontend
     image: plugins/docker
@@ -25,8 +29,7 @@ steps:
         from_secret: docker_hub_password
       dockerfile: wisdom-frontend/Dockerfile
       context: wisdom-frontend
-
-  trigger:
-    event:
-      exclude:
-        - tag
+    trigger:
+      event:
+        exclude:
+          - tag
