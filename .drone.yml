@@ -1,0 +1,23 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: wisdom-service
+    image: plugins/docker
+    settings:
+      repo: mejlholm/wisdom-service
+      username:
+        from_secret: docker_hub_username
+      password:
+        from_secret: docker_hub_password
+      dockerfile: wisdom-service/Dockerfile
+
+  - name: wisdom-frontend
+    image: plugins/docker
+    settings:
+      repo: mejlholm/wisdom-frontend
+      username:
+        from_secret: docker_hub_username
+      password:
+        from_secret: docker_hub_password
+      dockerfile: wisdom-frontend/Dockerfile
