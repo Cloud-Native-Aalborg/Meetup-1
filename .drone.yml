@@ -38,3 +38,8 @@ steps:
     depends_on:
       - build-wisdom-service
       - build-wisdom-frontend
+
+trigger:
+  event:
+    exclude:
+    - tag
