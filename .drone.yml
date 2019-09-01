@@ -6,6 +6,7 @@ steps:
     image: plugins/docker
     settings:
       repo: mejlholm/wisdom-service
+      auto_tag: true
       username:
         from_secret: docker_hub_username
       password:
@@ -17,6 +18,7 @@ steps:
     image: plugins/docker
     settings:
       repo: mejlholm/wisdom-frontend
+      auto_tag: true
       username:
         from_secret: docker_hub_username
       password:
