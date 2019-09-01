@@ -32,7 +32,7 @@ spec:
         resources:
           limits:
             memory: "256Mi"
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
           httpGet:
