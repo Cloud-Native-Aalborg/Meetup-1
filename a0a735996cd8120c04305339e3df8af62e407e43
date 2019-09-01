@@ -1,0 +1,1 @@
+{"jobID":"86a20554-b972-ac84-99ad-468fc0bc895a","spec":{"type":"policy","cause":{"Message":"","User":""},"spec":{"apps:deployment/wisdom-service":{"add":{},"remove":{"automated":"true"}}}},"result":null}
