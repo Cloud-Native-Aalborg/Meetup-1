@@ -68,7 +68,7 @@ fluxctl install \
 
 ## Steps to build and deploy applications
 
-Lets build our applications. 
+Lets build our applications. Well, this is automated, so not much to do here.
 
 If you are interested in the applications things to noice are: 
 
