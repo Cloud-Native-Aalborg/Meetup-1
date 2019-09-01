@@ -64,7 +64,6 @@ export CHUSER=mejlholm
 export FLUX_FORWARD_NAMESPACE=flux
 
 fluxctl install \
---ci-skip \
 --git-user=${GHUSER} \
 --git-email=${GHUSER}@users.noreply.github.com \
 --git-url=git@github.com:Cloud-Native-Aalborg/meetup-1 \
