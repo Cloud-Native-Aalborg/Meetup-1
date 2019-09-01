@@ -12,7 +12,9 @@ steps:
         from_secret: docker_hub_password
       dockerfile: wisdom-service/Dockerfile
       context: wisdom-service
-      tags: $DRONE_BUILD_NUMBER
+      tags:
+        - latest
+        - $DRONE_BUILD_NUMBER
 
   - name: build-wisdom-frontend
     image: plugins/docker
@@ -24,7 +26,9 @@ steps:
         from_secret: docker_hub_password
       dockerfile: wisdom-frontend/Dockerfile
       context: wisdom-frontend
-      tags: $DRONE_BUILD_NUMBER
+      tags:
+        - latest
+        - $DRONE_BUILD_NUMBER
 
   - name: notify
     image: plugins/slack
