@@ -17,7 +17,7 @@ steps:
         sed -i -E "s,image: mejlholm/wisdom-frontend:(.*)$,image: mejlholm/wisdom-frontend:"$(git rev-parse HEAD)",g" wisdom-frontend/deploy/wisdom-frontend-deployment.yaml
       - git add wisdom-service/deploy/wisdom-service-deployment.yaml
       - git commit -m "Bumped version"
-      - git push mejlholm:$PASSWORD@github.com:Cloud-Native-Aalborg/Meetup-1.git
+      - git push https://mejlholm:$PASSWORD@github.com/Cloud-Native-Aalborg/Meetup-1.git
 
   - name: build-wisdom-service
     image: plugins/docker
