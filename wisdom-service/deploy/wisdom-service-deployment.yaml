@@ -6,6 +6,9 @@ metadata:
   namespace: apps
   labels:
     app: wisdom-service
+  annotations:
+    flux.weave.works/tag.wisdom-service: *
+    flux.weave.works/automated: 'true'
 spec:
   replicas: 2
   selector:
@@ -22,7 +25,7 @@ spec:
     spec:
       containers:
       - name: wisdom-service
-        image: mejlholm/wisdom-service:8d91e1bdc528e774a67fff235cea8e21334334a1
+        image: mejlholm/wisdom-service:latest
         envFrom:
           - secretRef:
               name: wisdom-service-secret

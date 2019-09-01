@@ -6,6 +6,9 @@ metadata:
   namespace: apps
   labels:
     app: wisdom-frontend
+  annotations:
+    flux.weave.works/tag.wisdom-frontend: *
+    flux.weave.works/automated: 'true'
 spec:
   replicas: 2
   selector:
@@ -22,7 +25,7 @@ spec:
     spec:
       containers:
       - name: wisdom-frontend
-        image: mejlholm/wisdom-frontend:1fd3fb6e5f1718526af281bd330406bc68fd9820
+        image: mejlholm/wisdom-frontend:latest
         resources:
           limits:
             memory: "256Mi"
