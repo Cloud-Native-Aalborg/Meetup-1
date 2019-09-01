@@ -112,6 +112,7 @@ curl http://wisdom.mejlholm.org/wisdom/random
 
 ## Closing remarks
 K3s is not HA ready yet - but it makes a great little tool for testing kubernetes (and it runs a raspberry pi).
+K3s has an open port for the api by default, please check if running anything in the public cloud. 
 
 
 ## Links
