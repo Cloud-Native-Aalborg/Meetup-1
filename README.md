@@ -123,6 +123,7 @@ Sometimes you get a better overview with a ui - kubernetes web ui comes to the r
 kubectl apply -f kubernetes-web-ui.yaml
 kubectl proxy
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+kubectl delete -f kubernetes-web-ui.yaml
 ~~~
 
 
