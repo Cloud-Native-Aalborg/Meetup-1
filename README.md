@@ -99,6 +99,10 @@ curl http://wisdom.mejlholm.org/wisdom/random
 {"message":"\"Debuggers don't remove bugs. They only show them in slow motion.\" - Unknown"}
 ~~~
 
+And check it out in the browser:
+http://wisdom.mejlholm.org/
+
+
 
 ## If you don't like the commandline that much
 
