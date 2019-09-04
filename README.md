@@ -60,7 +60,7 @@ No resources found.
 As a bonus we'll use the FluxCD operator to handle our deployments. What we commit to git will be deployed automatically for us. 
 
 ~~~Shell
-export CHUSER=mejlholm
+export GHUSER=mejlholm
 export FLUX_FORWARD_NAMESPACE=flux
 
 fluxctl install \
