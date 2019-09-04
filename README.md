@@ -55,24 +55,6 @@ No resources found.
 ~~~
 
 
-## Setup FluxCD as GitOps deployment operator
-
-As a bonus we'll use the FluxCD operator to handle our deployments. What we commit to git will be deployed automatically for us. 
-
-~~~Shell
-export GHUSER=mejlholm
-export FLUX_FORWARD_NAMESPACE=flux
-
-fluxctl install \
---git-user=${GHUSER} \
---git-email=${GHUSER}@users.noreply.github.com \
---git-url=git@github.com:Cloud-Native-Aalborg/meetup-1 \
---git-paths=namespaces,wisdom-frontend/deploy,wisdom-service/deploy \
---namespace=flux | kubectl apply -f -
-
-kubectl patch deployments -n flux flux --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--git-ci-skip"}]'
-~~~
-
 ## Steps to build and deploy applications
 
 Lets build our applications. This is automated, so not much to do here.
@@ -90,8 +72,10 @@ If you are interested in the applications things to noice are:
 ~~~Shell
 kubectl config set-context --current --namespace=apps
 kubectl create secret generic wisdom-service-secret --from-env-file=secret.env
-./build.sh
-fluxctl sync
+
+kubectl apply -f namespaces
+kubectl apply -f wisdom-service/deploy
+kubectl apply -f wisdom-frontend/deploy
 
 kubectl get pods
 NAME                              READY   STATUS    RESTARTS   AGE
@@ -115,6 +99,7 @@ curl http://wisdom.mejlholm.org/wisdom/random
 {"message":"\"Debuggers don't remove bugs. They only show them in slow motion.\" - Unknown"}
 ~~~
 
+
 ## If you don't like the commandline that much
 
 Sometimes you get a better overview with a ui - kubernetes web ui comes to the rescue.
@@ -127,6 +112,27 @@ kubectl delete -f kubernetes-web-ui.yaml
 ~~~
 
 
+## Bonus: Setup FluxCD as GitOps deployment operator
+
+As a bonus we'll use the FluxCD operator to handle our deployments. What we commit to git will be deployed automatically for us. 
+
+~~~Shell
+export GHUSER=mejlholm
+export FLUX_FORWARD_NAMESPACE=flux
+
+kubectl create ns flux
+fluxctl install \
+--git-user=${GHUSER} \
+--git-email=${GHUSER}@users.noreply.github.com \
+--git-url=git@github.com:Cloud-Native-Aalborg/Meetup-1 \
+--git-paths=namespaces,wisdom-frontend/deploy,wisdom-service/deploy \
+--namespace=flux | kubectl apply -f -
+
+kubectl patch deployments -n flux flux --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--git-ci-skip"}]'
+fluxctl identity --k8s-fwd-ns flux
+# Manually add key to Deploy keys in GitHub settings. 
+
+~~~
 
 
 ## Closing remarks
@@ -143,11 +149,13 @@ Below you find links to the things we've used in this demo:
 
 - https://quarkus.io/
 
-- https://fluxcd.io/
-
 - https://github.com/Cloud-Native-Aalborg/Meetup-1
 
+- https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
+- https://fluxcd.io/
+
+- https://cloud.drone.io/Cloud-Native-Aalborg/Meetup-1/
 
 # About
 Arne Mejlholm, Java developer at Spar Nord. Driving the adoptation of docker/kubernetes and a lot more 
