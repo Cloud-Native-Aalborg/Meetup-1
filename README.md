@@ -115,6 +115,18 @@ curl http://wisdom.mejlholm.org/wisdom/random
 {"message":"\"Debuggers don't remove bugs. They only show them in slow motion.\" - Unknown"}
 ~~~
 
+## If you don't like the commandline that much
+
+Sometimes you get a better overview with a ui - kubernetes web ui comes to the rescue.
+
+~~~Shell
+kubectl apply -f kubernetes-web-ui.yaml
+kubectl proxy
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+~~~
+
+
+
 
 ## Closing remarks
 K3s is not HA ready yet - but it makes a great little tool for testing kubernetes (and it runs a raspberry pi).
