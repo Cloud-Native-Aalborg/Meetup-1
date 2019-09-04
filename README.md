@@ -117,13 +117,12 @@ kubectl delete -f kubernetes-web-ui.yaml
 As a bonus we'll use the FluxCD operator to handle our deployments. What we commit to git will be deployed automatically for us. 
 
 ~~~Shell
-export GHUSER=mejlholm
 export FLUX_FORWARD_NAMESPACE=flux
 
 kubectl create ns flux
 fluxctl install \
---git-user=${GHUSER} \
---git-email=${GHUSER}@users.noreply.github.com \
+--git-user=mejlholm \
+--git-email=mejlholm@users.noreply.github.com \
 --git-url=git@github.com:Cloud-Native-Aalborg/Meetup-1 \
 --git-paths=namespaces,wisdom-frontend/deploy,wisdom-service/deploy \
 --namespace=flux | kubectl apply -f -
