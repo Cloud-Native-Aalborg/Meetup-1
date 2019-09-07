@@ -21,7 +21,7 @@ sudo install k3sup /usr/local/bin/
 Use k3sup to install k3s on master node
 
 ~~~Shell
-export IP=159.69.209.253
+export IP=xxx.yyy.zzz.199
 k3sup install --ip $IP
 mv kubeconfig ~/.kube/config
 
@@ -33,8 +33,8 @@ debian-2gb-nbg1-1   Ready    worker   4m47s   v1.14.6-k3s.1
 Use k3sup to join work nodes
 
 ~~~Shell
-k3sup join --ip 159.69.209.198 --server-ip $IP
-k3sup join --ip 116.203.200.59 --server-ip $IP
+k3sup join --ip xxx.yyy.zzz.200 --server-ip $IP
+k3sup join --ip xxx.yyy.zzz.201 --server-ip $IP
 ~~~
 
 Check that the nodes are joining
@@ -70,10 +70,11 @@ If you are interested in the applications things to noice are:
  - flux monitors and deploy them
 
 ~~~Shell
+kubectl apply -f namespaces
+
 kubectl config set-context --current --namespace=apps
 kubectl create secret generic wisdom-service-secret --from-env-file=secret.env
 
-kubectl apply -f namespaces
 kubectl apply -f wisdom-service/deploy
 kubectl apply -f wisdom-frontend/deploy
 
@@ -89,7 +90,7 @@ Add wisdom.mejlholm.org to /etc/hosts (or setup real dns)
 
 ~~~Shell
 sudo nano /etc/hosts #add the following line
-159.69.209.253  wisdom.mejlholm.org
+xxx.yyy.zzz.199  wisdom.mejlholm.org
 ~~~
 
 Lets test our application
